@@ -1,0 +1,62 @@
+config t
+Dot11 ssid wins32wifi
+authentication open
+authentication key-management wpa
+wpa-psk ascii winser123
+guest-mode 
+int dot11radio 0
+no shut
+encryption mode ciphers tkip
+ssid wins32wifi
+
+config t
+no Dot11 ssid winsMwifi
+authentication open
+authentication key-management wpa
+wpa-psk ascii winser123
+guest-mode 
+int dot11radio 0
+no shut
+encryption mode ciphers tkip
+no ssid winsMwifi
+
+config t
+ip routing 
+int vlan 10
+ip Helper-Address 10.32.1.10
+end
+
+config t
+ip routing 
+int vlan 50
+ip Helper-Address 10.32.1.10
+end
+
+Task 8. Domain name System/ Server installation/ configuration
+Step 1 Learn previous/ old dns install
+powershell
+Uninstall -WindowsFeature -name dns -includemanagementtools
+
+Primary: ikaw ang gagawa
+secondary: iba ang gagawa
+Stub: Kopyahin ang gawa  ng iba
+
+Task 8.
+
+Real Name		Aliases
+w22			www= web, smtp= sendMail, 
+
+Task 9. Installion and configuration basic web services/apps
+powershell
+Install-windowsFeature -name web-server -includemanagementTools
+
+add-DnsServerResourceRecond -zonename gawako32.com -Cname -name bago -hostname w22.gawako32.com
+
+New-Website -name "pangfour" -hostheader "bago.gawako32.com" -physicalpath "d:\webs\appbiz"
+
+Task 10. Installing your own Email Servers at your office
+
+Microsoft Exchange= Super mahal
+Zimbra Email= Medyo mura+ mapapamura ka sa subscription
+Hmail= libre
+
